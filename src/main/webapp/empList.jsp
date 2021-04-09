@@ -7,19 +7,20 @@
 <head>
 <meta charset="UTF-8">
 <title>직책 목록</title>
+<link rel="stylesheet" href="css/empList.css">
 </head>
 <body>
 	${list }
-	<h2>직책 목록</h2>
+	<h2>사원 목록</h2>
 	<table   class="tbl_type" border="1">
 		<thead>
 			<tr>
-				<td>사원 번호</td>
-				<td>사원 이름</td>
-				<td>사원 직책</td>
-				<td>직속 상사</td>
-				<td>사원 월급</td>
-				<td>사원 부서</td>
+				<td>사원번호</td>
+				<td>사원명</td>
+				<td>직책</td>
+				<td>직속상사</td>
+				<td>급여</td>
+				<td>부서</td>
 				<td>입사일</td>
 			</tr>
 		</thead>
@@ -27,19 +28,17 @@
 			<c:forEach var="emp" items="${emp }">
 				<tr>
 					<td>${emp.empNo}</td>
-					<td><a href="EmpGetServlet?empNo=${emp.empNo}">${emp.empName}</a></td>
-					<td><a href="EmpGetServlet?empNo=${emp.empNo}">${emp.title.titleName }</a></td>
+					<td>${emp.empName}</td>
+					<td>${emp.title.titleName }</td>
 					<td>
-					<a href="EmpGetServlet?empNo=${emp.empNo}">
 					<c:if test="${emp.manager.empNo != 0 }">
 						${emp.manager.empName}(${emp.manager.empNo})
 					</c:if>
 					<c:if test="${emp.manager.empNo == 0 }"></c:if>
-					</a>
 					</td>
-					<td><a href="EmpGetServlet?empNo=${emp.empNo}"><fmt:formatNumber value = "${emp.salary}" pattern="\#,###" /></a></td>
-					<td><a href="EmpGetServlet?empNo=${emp.empNo}">${emp.dept.deptName }</a></td>
-					<td><a href="EmpGetServlet?empNo=${emp.empNo}"><fmt:formatDate value="${emp.hiredate}" pattern="yyyy년 MM월 dd일" /></a></td>
+					<td><fmt:formatNumber value = "${emp.salary}" pattern="#,###" /></td>
+					<td>${emp.dept.deptName }</td>
+					<td><fmt:formatDate value="${emp.hiredate}" pattern="yyyy년 MM월 dd일" /></td>
 				</tr>
 			</c:forEach>
 		</tbody>

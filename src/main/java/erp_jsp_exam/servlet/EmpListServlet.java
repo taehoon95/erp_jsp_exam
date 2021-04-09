@@ -12,13 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import erp_jsp_exam.dto.Employee;
 import erp_jsp_exam.service.EmployeeService;
 
-@WebServlet("/EmpGetServlet")
-public class EmpGetServlet extends HttpServlet {
+@WebServlet("/EmpListServlet")
+public class EmpListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private EmployeeService service;
 	
-    public EmpGetServlet() {
+    public EmpListServlet() {
     	service = new EmployeeService();
     }
 
